@@ -1,0 +1,28 @@
+html {
+  height: 100%;
+}
+body {
+  background: linear-gradient(
+    180.3deg,
+    rgb(221, 221, 221) 5.5%,
+    rgb(110, 136, 161) 90.2%
+  );
+  background-repeat: no-repeat;
+}
+.weather-app {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 10px;
+  border: 1px solid #272244;
+  border-radius: 5px;
+}
+h2 {
+  color: #272244;
+  margin-bottom: 0;
+}
+
+ul {
+  color: #272244;
+  list-style: none;
+  padding-left: 0;
+}
