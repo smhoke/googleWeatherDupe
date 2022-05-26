@@ -1,8 +1,4 @@
-let apiKey = "c0d34ff35f99187b8089dbc8ea55c072";
-let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=Troy,US&appid=${apiKey}&units=imperial`;
-
 let now = new Date();
-
 //current date
 //day
 let days = [
@@ -53,6 +49,11 @@ function displayDefault(response) {
   console.log(response.data);
   let currentCityElement = document.querySelector("#currentCity");
   currentCityElement.innerHTML = response.data.name;
+  let currentWeatherIconElement = document.querySelector("#currentWeatherIcon");
+  currentWeatherIconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
   let currentTempElement = document.querySelector("#currentTemp");
   currentTempElement.innerHTML = Math.round(response.data.main.temp);
   let currentConditionElement = document.querySelector("#currentCondition");
@@ -65,4 +66,18 @@ function displayDefault(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
-axios.get(apiURL).then(displayDefault);
+function search(city) {
+  let apiKey = "c0d34ff35f99187b8089dbc8ea55c072";
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city},US&appid=${apiKey}&units=imperial`;
+  axios.get(apiURL).then(displayDefault);
+}
+search("New York");
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let citySearchElement = document.querySelector("#citySearch");
+  search(citySearchElement.value);
+}
+
+let form = document.querySelector("#form");
+form.addEventListener("submit", handleSubmit);

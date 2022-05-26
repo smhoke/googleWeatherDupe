@@ -24,6 +24,16 @@ ul {
 li {
   text-transform: capitalize;
 }
+img {
+  max-width: 4rem;
+  max-height: 4rem;
+  padding: 0;
+  margin: 0;
+}
+a {
+  display: inline-block;
+  line-height: 5px;
+}
 .container-fluid {
   max-width: 600px;
   margin: 50px auto;
@@ -33,4 +43,7 @@ li {
   padding: 10px;
   border: 1px solid #272244;
   border-radius: 5px;
+}
+.form {
+  margin-bottom: 10px;
 }
