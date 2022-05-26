@@ -47,3 +47,11 @@ a {
 .form {
   margin-bottom: 10px;
 }
+
+.active {
+  text-decoration: none;
+  color: #272244;
+}
+.active:hover {
+  cursor: default;
+}

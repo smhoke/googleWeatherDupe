@@ -1,6 +1,5 @@
 let now = new Date();
-//current date
-//day
+//current day
 let days = [
   "Sunday",
   "Monday",
@@ -11,7 +10,7 @@ let days = [
   "Saturday",
 ];
 let day = days[now.getDay()];
-//month
+//current month
 let months = [
   "January",
   "February",
@@ -27,7 +26,7 @@ let months = [
   "December",
 ];
 let month = months[now.getMonth()];
-//date
+//current date
 let date = now.getDate();
 
 let currentDate = document.querySelector("#currentDate");
@@ -45,6 +44,7 @@ if (minutes < 10) {
 let currentTime = document.querySelector("#currentTime");
 currentTime.innerHTML = `${hours}:${minutes}`;
 
+//display city data on load or reload
 function displayDefault(response) {
   console.log(response.data);
   let currentCityElement = document.querySelector("#currentCity");
@@ -64,14 +64,16 @@ function displayDefault(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
+
+  fahrenheitTemp = response.data.main.temp;
 }
 
+//search for cities and import data
 function search(city) {
   let apiKey = "c0d34ff35f99187b8089dbc8ea55c072";
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city},US&appid=${apiKey}&units=imperial`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiURL).then(displayDefault);
 }
-search("New York");
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -81,3 +83,29 @@ function handleSubmit(event) {
 
 let form = document.querySelector("#form");
 form.addEventListener("submit", handleSubmit);
+
+//change Temp to C when clickng C link
+fahrenheitTemp = null;
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  let celsiusTemp = ((fahrenheitTemp - 32) * 5) / 9;
+  let currentTempElement = document.querySelector("#currentTemp");
+  currentTempElement.innerHTML = Math.round(celsiusTemp);
+  fahrenheit.classList.remove("active");
+  celsius.classList.add("active");
+}
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", displayCelsiusTemp);
+//change Temp to F when clickng F link
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let currentTempElement = document.querySelector("#currentTemp");
+  currentTempElement.innerHTML = Math.round(fahrenheitTemp);
+  fahrenheit.classList.add("active");
+  celsius.classList.remove("active");
+}
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", displayFahrenheitTemp);
+
+//display NYC weather for default
+search("New York");
