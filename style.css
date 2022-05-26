@@ -32,7 +32,7 @@ img {
 }
 a {
   display: inline-block;
-  line-height: 5px;
+  font-size: medium;
 }
 .container-fluid {
   max-width: 600px;
