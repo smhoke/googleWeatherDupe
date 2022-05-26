@@ -10,6 +10,7 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="style.css" />
     <title>Google Weather App Dupe</title>
   </head>
@@ -18,28 +19,31 @@
       <div class="weather-app">
         <div class="row justify-content-between">
           <div class="col-4">
-            <h2>☀️ 63℉|℃</h2>
+            <h2>
+              <span id="currentWeatherIcon">☀️</span>
+              <span id="currentTemp">63</span> ℉|℃
+            </h2>
             <ul>
-              <li>Precipitation: 0%</li>
-              <li>Humidity: 55%</li>
-              <li>Wind: 7 mph</li>
+              <li>Feels Like: <span id="feelsLike"> 0</span>°</li>
+              <li>Humidity: <span id="humidity">55</span> %</li>
+              <li>Wind: <span id="wind">7</span> mph</li>
             </ul>
           </div>
           <div class="col-4">
-            <h2>New York</h2>
+            <h2 id="currentCity">New York</h2>
             <ul>
               <li>Wednesday 5:00</li>
-              <li>Sunny</li>
+              <li id="currentCondition">Sunny</li>
             </ul>
           </div>
         </div>
-        <small>
-          <a href="https://github.com/smhoke/googleWeatherDupe" target="_blank"
-            >Open-source code</a
-          >
-          by Shaneé Hoke
-        </small>
       </div>
+      <small>
+        <a href="https://github.com/smhoke/googleWeatherDupe" target="_blank"
+          >Open-source code</a
+        >
+        by Shaneé Hoke
+      </small>
     </div>
     <script src="app.js"></script>
   </body>
